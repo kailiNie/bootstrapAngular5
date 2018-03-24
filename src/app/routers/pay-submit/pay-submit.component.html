@@ -1,0 +1,43 @@
+ <app-alert></app-alert>
+<div class="container"  >
+    <form autocomplete="on" [formGroup] = "formModel"  (submit)="onSubmit()">
+        <div class="form-group row text-center" style="color: white">
+            <label class="col-sm-12 col-form-label text-center">
+                <h1> <span class="glyphicon glyphicon-jpy"></span></h1>
+                <h2>快捷支付</h2>
+            </label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <input type="number" 
+                       class="form-control"  
+                       formControlName = "TotalAmount"
+                       placeholder="支付金额">
+            </div>
+        </div>
+ 
+        <div class="input-group form-group">
+ 			<input type = "tel" 
+                   class = "form-control" 
+                   placeholder ="短信验证码" 
+                   formControlName = "QuickSmsCode"
+                   aria-describedby = "basic-addon2">
+  			<span class="input-group-addon" id="basic-addon2"
+             (click)="getSmscode()">{{codeMsg}}</span>
+           
+		</div>
+        <div style="text-align: left;color: red;" 
+        [hidden] =" formModel.get('QuickSmsCode').untouched || formModel.get('QuickSmsCode').valid"  
+                    class="alert alert-danger" >
+            <p [hidden] = "!formModel.hasError('required','QuickSmsCode')">验证码必填项</p>    
+            <p [hidden] = "!formModel.hasError('minlength','QuickSmsCode') && !formModel.hasError('maxlength','QuickSmsCode')">验证码长度为6分字符</p>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+               <button  type="submit" class="btn btn-primary btn-lg btn-block"  [disabled]="!formModel.valid">支付</button>
+            </div>
+        </div>
+    </form> 
+</div>
+   
+ 
