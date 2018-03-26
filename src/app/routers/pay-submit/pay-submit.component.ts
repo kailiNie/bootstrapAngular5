@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from '@angular/forms';
-import { ActivatedRoute} from '@angular/router';  
+import { ActivatedRoute,Router} from '@angular/router';  
+ 
 import { HttpServiceService } from '../../services/http-service.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class PaySubmitComponent implements OnInit {
   private isDisSendCode : boolean = false;
 
 
-  constructor(private routerinfo : ActivatedRoute,private httpService:HttpServiceService) {
+  constructor(private routerinfo : ActivatedRoute,private httpService:HttpServiceService,private router : Router) {
 
   	this.formModel = this.fb.group({
   		TotalAmount : ['',[Validators.required]],
@@ -39,6 +40,7 @@ export class PaySubmitComponent implements OnInit {
           alert(Mes)
           return;
         }
+        this.router.navigate(['/PaySuncess']);
     });
   }
   /**

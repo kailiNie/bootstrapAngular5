@@ -12,10 +12,12 @@ import { PaySubmitComponent } from './routers/pay-submit/pay-submit.component';
 import { PaySubmit1Component } from './routers/pay-submit1/pay-submit1.component';
 import { HttpServiceService } from './services/http-service.service';
 import { AlertComponent } from './alert/alert/alert.component';
+import { PaySuncessComponent } from './routers/pay-suncess/pay-suncess.component';
 
 export const ROUTES: Routes = [
   { path: '', component: PaySubmit1Component },
-	{ path: 'paySubmit/:RId', component: PaySubmitComponent }
+	{ path: 'paySubmit/:RId', component: PaySubmitComponent},
+  { path : 'PaySuncess',component:PaySuncessComponent}
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ export const ROUTES: Routes = [
     AppComponent,
     PaySubmitComponent,
     PaySubmit1Component,
-    AlertComponent
+    AlertComponent,
+    PaySuncessComponent
   ],
   imports: [
      BrowserModule,
